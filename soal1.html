@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Soal 1</title>
+    <script>
+        var uang = 3000000;
+        var bunga = 0.025;
+    
+        document.write("Jumlah Uang Rp."+uang,"<br>");
+    
+        function bulan(jml) {
+            for (i=1; i<=jml; i++) {
+                uang += uang * bunga;       
+            }
+        
+        document.write("Jumlah Bunga/Bulan = 2.5% atau "+bunga,"<br>");
+        document.write("Total Bayar Bulan ke "+jml+ " adalah Rp."+uang.toFixed(2))
+        }
+    
+        // input (bulan)
+        bulan(12);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

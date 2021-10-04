@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Soal 3</title>
+    <script>
+        function pascal_function(numRows) {
+            var arr=new Array()
+            for(i = 1; i<=numRows+1; i++){
+                arr[i]=new Array();
+                for(j = 1; j<=i; j++){
+                    if(j == 1 || j == i){
+                        arr[i][j] = 1;
+                    }
+                    else {
+                        arr[i][j] = arr[i-1][j-1]+arr[i-1][j];
+                    }
+                }
+            }
+    
+            for(i = 1; i<=numRows+1; i++){
+                for(j = 1; j<=i; j++){
+                    document.write(arr[i][j]+' ');
+                }
+            document.write("<br><br>")
+            }
+        }
+    
+        pascal_function(4);
+    </script>
+</head>
+<body>
+</body>
+</html>
