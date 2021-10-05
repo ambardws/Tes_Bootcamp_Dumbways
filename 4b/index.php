@@ -27,18 +27,18 @@ $buku = query("SELECT * FROM book_tb");
         <br>
         <br>
         <div class="row">
-                <?php $i = 1; ?>
                 <?php foreach ($buku as $row) : ?>
-            <div class="col-sm">
-                    <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="img/<?= $row["img"] ?>" alt="Card image cap">
+            <div class="col-md-4 mb-4">
+                    <div class="card"">
+                    <img class="card-img-top" src="img/<?= $row["img"] ?>" height="400px" width="300px" alt="Card image cap">
                     <div class="card-body">
                         <p class="card-text"><?= $row["name"] ?>.</p>
-                        <a href="#" class="btn btn-primary">View Detail</a>
+                        <div class="row justify-content-center">
+                            <a href="#" class="btn btn-primary">View Detail</a>
+                        </div>
                     </div>
                     </div>
             </div>
-                 <?php $i++; ?>
                 <?php endforeach ?>
         </div>
       

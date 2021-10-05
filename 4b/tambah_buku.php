@@ -1,12 +1,11 @@
 <?php
 
 require 'function.php';
-$buku = query("SELECT * FROM book_tb");
+$bukuPenulis = query("SELECT * FROM writer_tb");
+$bukuCategory = query("SELECT * FROM category_tb");
 
 // cek apakah tombol submit sudah ditekan atau belum
 if ( isset($_POST["submit"]) ) {
-    
-
     // cek apakah data berhasil di tambahkan atau tidak
     if( tambah($_POST) > 0 )
     {
@@ -46,7 +45,7 @@ if ( isset($_POST["submit"]) ) {
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group col-md-12">
                             <label for="judul">Judul</label>
-                            <input type="text" class="form-control" placeholder="Masukkan Judul" name="judul" required>
+                            <input type="text" class="form-control" placeholder="Masukkan Judul" name="name" required>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="penulis">Penulis</label>
@@ -54,28 +53,35 @@ if ( isset($_POST["submit"]) ) {
                             <div class="input-group-prepend">
                                 <label class="input-group-text" for="inputGroupSelect01">Options</label>
                             </div>
-                            <select class="custom-select" id="inputGroupSelect01">
+                            <select class="custom-select" id="inputGroupSelect01" name="writer_id">
                                 <option selected>Choose...</option>
-                                <?php $i = 1; ?>
-                <                <?php foreach ($buku as $row) : ?>
-                                <option value="1"><?= $row["writer_id"] ?></option>
-                                <?php $i++; ?>
+                                <?php foreach ($bukuPenulis as $row) : ?>
+                                <option value="<?= $row["id"] ?>"><?= $row["name"] ?></option>
                                 <?php endforeach ?>
                             </select>
                             </div>
-                            <input type="text" class="form-control" placeholder="Masukkan Penulis" name="penulis" required>
                         </div>
                         <div class="form-group col-md-12">
-                            <label for="penerbit">Penerbit</label>
-                            <input type="text" class="form-control" placeholder="Masukkan Penerbit" name="penerbit" required>
+                            <label for="penulis">Category</label>
+                            <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01" name="category_id">
+                                <option selected>Choose...</option>
+                                <?php foreach ($bukuCategory as $row) : ?>
+                                <option value="<?= $row["id"] ?>"><?= $row["name"] ?></option>
+                                <?php endforeach ?>
+                            </select>
+                            </div>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="tahun">Tahun</label>
-                            <input type="text" class="form-control" placeholder="Masukkan Tahun" name="tahun" required>
+                            <input type="text" class="form-control" placeholder="Masukkan Tahun" name="publication_year" required>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="gambar">Gambar</label>
-                            <input type="file" class="form-control" placeholder="Masukkan Gambar" name="gambar" required>
+                            <input type="file" class="form-control" placeholder="Masukkan Gambar" name="img" required>
                         </div>
                         <button type="submit" name="submit" class="btn btn-primary ml-3">Submit</button>
                         
